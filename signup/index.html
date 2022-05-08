@@ -7,39 +7,140 @@
 <link rel="stylesheet" href="./stylesheet1.css">
 </head>
 <body background="./mi4.jpg">
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+  <script src="codingpeeps/firebase.js"></script>
+  
+  <script>
+//     const dblogin= firebase.database();
+//     const display_login=document.querySelector('#login');
+//     const reflogin = dblogin.ref('user_details/'+'user1/'+'login_id/');
+//     const refpass = dbpass.ref('user_details/'+'user1/'+'password/');
+//     reflogin.on('value', snapshot => {
+//     const data1 = snapshot.val();
+//     //console.log(data);
+//     //display_co2.innerHTML = data;
+// })
+// // code to match login id
+// refpass.on('value', snapshot => {
+//     const data2 = snapshot.val();
+//     //console.log(data);
+//     //display_co2.innerHTML = data;
+// })
+// //match password
+
+  </script>
 
 <div class="box-form" border="10px">
   <div class="left" background="./mi4.jpg">
     <div class="overlay">
       <h2><br>Welcome</h2>
       <p>
-      required text
+       <b>This is a safety mine environment for<br> remote monitoring via wireless system.</b>
       </p>
     </div>
   </div>
  <div class="right">
  <h5 id="login">Login</h5>
-<p>Don't have an account? <a href="#">Creat Your Account</a> it takes less than a minute</p>
+<p>Type your credential below to log in securely</p>
 <div class="inputs">
-<input type="text" placeholder="user name">
+<input type="text" placeholder="user name" id="username">
 <br>
-<input type="password" placeholder="password">
+<input type="password" placeholder="password" id="pass">
 </div>
 <br><br>
-<div class="remember-me--forget-password">
-
-<label>
-<input type="checkbox" name="item" checked />
-<span class="text-checkbox">Remember me</span>
-</label>
-<p>forget password?</p>
-</div>
 <br>
-<button>Login</button>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+  <script src="codingpeeps/firebase.js"></script>
+<script> 
+  function newpage(){
+    const dblogin= firebase.database();
+    var uid;
+    var check_pass;
+      const display_login=document.querySelector('#login');
+      const reflogin = dblogin.ref('user_details/'+'user1/'+'login_id/');
+      const refpass = dbpass.ref('user_details/'+'user1/'+'password/');
+      reflogin.on('value', snapshot => {
+      const data1 = snapshot.val();
+      uid=data1;
+      //console.log(data);
+      //display_co2.innerHTML = data;
+  })
+  // code to match login id
+  
+  refpass.on('value', snapshot => {
+      const data2 = snapshot.val();
+      check_pass=data2;
+      //console.log(data);
+      //display_co2.innerHTML = data;
+  })
+  //match password
+  
+      var login_in = document.getElementById('userid').value;
+      var pass = document.getElementById('pass').value;
+    if(login_in===uid){
+      if(pass===check_pass){
+        alert ("Login successfully");
+        window.location = "codingpeeps/index.html"; // Redirecting to other page.
+      }
+      else{
+        alert ("Wrong Uid or password");
+      }
+  }
+         alert ("Wrong Uid or password");
+  }
+  
+  
+  </script>
+  
+<!--<button onclick="newpage()">Login</button>-->
 </div>
+  <div style = "position:absolute; left:760px; top:600px;">
+     <input type="submit" value="login" id="loginbutton" style="font-size: 29px;padding: 5px;padding-left: 40px;padding-right: 40px;" onclick="newpage()" >
+  </div> 
 </div>
 
+<script> 
+// function newpage(){
+//   const dblogin= firebase.database();
+//   var uid;
+//   var check_pass;
+//     const display_login=document.querySelector('#login');
+//     const reflogin = dblogin.ref('user_details/'+'user1/'+'login_id/');
+//     const refpass = dbpass.ref('user_details/'+'user1/'+'password/');
+//     reflogin.on('value', snapshot => {
+//     const data1 = snapshot.val();
+//     uid=data1;
+//     //console.log(data);
+//     //display_co2.innerHTML = data;
+// })
+// // code to match login id
 
+// refpass.on('value', snapshot => {
+//     const data2 = snapshot.val();
+//     check_pass=data2;
+//     //console.log(data);
+//     //display_co2.innerHTML = data;
+// })
+// //match password
+
+//     var login_in = document.getElementById('userid').value;
+//     var pass = document.getElementById('pass').value;
+//   if(login_in===uid){
+//     if(pass===check_pass){
+//       alert ("Login successfully");
+//       window.location = "codingpeeps/index.html"; // Redirecting to other page.
+//     }
+//     else{
+//       alert ("Wrong Uid or password");
+//     }
+// }
+//        alert ("Wrong Uid or password");
+// }
+
+
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-80520768-2" type="f78d688bfe31170d7937f2ce-text/javascript"></script>
 <script type="f78d688bfe31170d7937f2ce-text/javascript">
   window.dataLayer = window.dataLayer || [];
@@ -48,5 +149,7 @@
 
   gtag('config', 'UA-80520768-2');
 </script>
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f78d688bfe31170d7937f2ce-|49" defer=""></script></body>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f78d688bfe31170d7937f2ce-|49" defer=""></script>
+
+</body>
 </html>
