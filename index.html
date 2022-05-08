@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <!--<title> Responsiive Admin Dashboard | CodingLab </title>-->
+  <link rel="stylesheet" href="style.css">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">miningsavior</span>
+    </div>
+    <ul class="nav-links">
+      <li>
+        <a href="#" class="active">
+          <i class='bx bx-grid-alt'></i>
+          <span class="links_name">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-box'></i>
+          <span class="links_name">analytics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-list-ul'></i>
+          <span class="links_name">track data</span>
+        </a>
+      </li>
+      <!-- <li>
+        <a href="#">
+          <i class='bx bx-pie-chart-alt-2'></i>
+          <span class="links_name">Analytics</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-coin-stack'></i>
+          <span class="links_name">dangers</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-book-alt'></i>
+          <span class="links_name">casuality</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class='bx bx-user'></i>
+          <span class="links_name">Team</span>
+        </a>
+      </li>
+
+
+      <li>
+        <a href="#">
+          <i class='bx bx-cog'></i>
+          <span class="links_name">Setting</span>
+        </a>
+      </li> -->
+      <li class="log_out">
+        <a href="#">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <section class="home-section">
+    <nav>
+      <div class="sidebar-button">
+        <i class='bx bx-menu sidebarBtn'></i>
+        <span class="dashboard">helpboard</span>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search'></i>
+      </div>
+      <div class="profile-details">
+        <!--<img src="images/profile.jpg" alt="">-->
+        <span class="admin_name">Yash Sati</span>
+        <i class='bx bx-chevron-down'></i>
+      </div>
+    </nav>
+
+    <div class="home-content">
+      <div class="overview-boxes">
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Carbon Dioxide</div>
+            <div class="number" id="co2_lev">48</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">ppm</span>
+            </div>
+          </div>
+          <i class='bx bx-hard-hat'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">CO level</div>
+            <div class="number" id="co_lev">3</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">ppm</span>
+            </div>
+          </div>
+          <i class='bx bxs-cart-add cart two'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Oxygen level</div>
+            <div class="number" id="o2_lev">2,86</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">ppm</span>
+            </div>
+          </div>
+          <i class='bx bx-plus-medical'></i>
+        </div>
+        <div class="box">
+          <div class="right-side">
+            <div class="box-topic">Methane</div>
+            <div class="number" id="ch4_lev">2</div>
+            <div class="indicator">
+              <i class='bx bx-up-arrow-alt'></i>
+              <span class="text">ppm</span>
+            </div>
+          </div>
+          <i class='bx bx-bell-plus'></i>
+        </div>
+      </div>
+
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Dust (milligrams per square metre)<div id="dust">
+              <p>2</p>
+            </div><br><br>
+            Air Velocity(Inches per minute) <div id="air">
+              <p>2</p>
+            </div> <br> <br>
+            Illuminicity(lux)<div id="illumination">
+              <p>2</p>
+            </div><br> <br>
+          </div>
+          <div id="container" style="width: 80%; height: 80%"></div>
+
+        </div>
+        <div id="piechart"></div>
+      </div>
+    </div>
+  </section>
+  <!--Important-->
+  <!--<div id="displayVal" style="margin-left: 500px;">NO VALUE</div>-->
+  <!-- <script>
+    anychart.onDocumentReady(function () {
+
+      // set the data
+      var data = {
+        header: ["gas Name", "amount"],
+        rows: [
+          ["CO2", 2],
+          ["NO2", 8],
+          ["O2", 17],
+          ["CH4", 10],
+
+        ]
+      };
+
+      // create the chart
+      var chart = anychart.bar();
+
+      // add the data
+      chart.data(data);
+
+      // set the chart title
+      chart.title("TOTAL AMOUNT OF GASES");
+
+      // draw
+      chart.container("container");
+      chart.draw();
+    });
+  </script>-->
+
+  <!--Here-->
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+  <script src="./firebase.js"></script>
+  <!-- <script src="./script.js"></script> -->
+  <script src="./methane.js"></script>
+  <script src="./oxygen.js"></script>
+  <script src="./carbon_monoxide.js"></script>
+  <script src="./carbon_dioxide.js"></script>
+  <script src="./bottom.js"></script>
+  <script src="./air.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+
+
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['gas', '%'],
+        ['CO2', 8],
+        ['O2', 51],
+        ['NO2', 8],
+        ['CH4', 16],
+        ['CO', 17]
+
+      ]);
+
+
+      var options = { 'title': 'GAS AMOUNT NEAR DEVICE', 'width': 550, 'height': 400 };
+
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+    } 
+  </script>
+
+  <!-- <script src=""></script> -->
+  <!--<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+  <script src="./firebase.js"></script>
+  <script src="./script.js"></script>
+  <script src="./methane.js"></script>
+  <script src="./oxygen.js"></script>
+  <script src="./carbon_monoxide.js"></script>
+  <script src="./carbon_dioxide.js"></script>-->
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="text-align:left">time<br>stamp</th>
+        <th>O<sub>2</sub></th>
+        <th>CO<sub>2</sub></th>
+        <th>CH<sub>4</sub></th>
+        <th>CO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="t1">time1</td>
+        <td id="1a">1</td>
+        <td id="1b">1</td>
+        <td id="1c">1</td>
+        <td id="1d">1</td>
+      </tr>
+      <tr>
+        <td id="t2">time2</td>
+        <td id="2a">2</td>
+        <td id="2b">2</td>
+        <td id="2c">2</td>
+        <td id="2d">2</td>
+      </tr>
+      <tr>
+        <td id="t3">time3</td>
+        <td id="3a">3</td>
+        <td id="3b">3</td>
+        <td id="3c">3</td>
+        <td id="3d">3</td>
+      </tr>
+      <tr>
+        <td id="t4">time4</td>
+        <td id="4a">4</td>
+        <td id="4b">4</td>
+        <td id="4c">4</td>
+        <td id="4d">4</td>
+      </tr>
+      <tr>
+        <td id="t5">time5</td>
+        <td id="5a">5</td>
+        <td id="5b">5</td>
+        <td id="5c">5</td>
+        <td id="5d">5</td>
+      </tr>
+      <tr>
+        <td id="t6">time6</td>
+        <td id="6a">6</td>
+        <td id="6b">6</td>
+        <td id="6c">6</td>
+        <td id="6d">6</td>
+      </tr>
+      <tr>
+        <td id="t7">time7</td>
+        <td id="7a">7</td>
+        <td id="7b">7</td>
+        <td id="7c">7</td>
+        <td id="7d">7</td>
+      </tr>
+      <tr>
+        <td id="t8">time8</td>
+        <td id="8a">8</td>
+        <td id="8b">8</td>
+        <td id="8c">8</td>
+        <td id="8d">8</td>
+      </tr>
+      <tr>
+        <td id="t9">time9</td>
+        <td id="9a">9</td>
+        <td id="9b">9</td>
+        <td id="9c">9</td>
+        <td id="9d">9</td>
+      </tr>
+      <tr>
+        <td id="t10">time10</td>
+        <td id="10a">10</td>
+        <td id="10b">10</td>
+        <td id="10c">10</td>
+        <td id="10d">10</td>
+      </tr>
+      <tr>
+        <td id="t11">time11</td>
+        <td id="11a">11</td>
+        <td id="11b">11</td>
+        <td id="11c">11</td>
+        <td id="11d">11</td>
+      </tr>
+      <tr>
+        <td id="t12">time12</td>
+        <td id="12a">12</td>
+        <td id="12b">12</td>
+        <td id="12c">12</td>
+        <td id="12d">12</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container" id='chartbar'>
+    <script type="text/javascript">
+      const db9 = firebase.database();
+      const ref9 = db9.ref('TrackData:' + 'GasData/' + 'ch4:'+'1');
+      var meth;
+      ref2.on('value', snapshot => {
+        console.log(snapshot);
+        const data = snapshot.val();
+        console.log(data);
+        meth = data;
+
+      })
+
+
+
+      window.onload = function () {
+
+        var dps = [{ x: 1, y: 10 }, { x: 2, y: 13 }, { x: 3, y: 18 }, { x: 4, y: 20 }, { x: 5, y: 17 }, { x: 6, y: 10 }, { x: 7, y: 13 }, { x: 8, y: 18 }, { x: 9, y: 20 }, { x: 10, y: 17 }];   //dataPoints. 
+
+        var chart = new CanvasJS.Chart("chartContainer", {
+          title: {
+            text: "Live Data"
+          },
+          axisX: {
+            title: "Axis X Title"
+          },
+          axisY: {
+            title: "Units"
+          },
+          data: [{
+            type: "line",
+            dataPoints: dps
+          }]
+        });
+
+        chart.render();
+        var xVal = dps.length + 1;
+        var yVal = meth;
+        var updateInterval = 1000;
+
+        var updateChart = function () {
+
+
+          yVal = yVal;//+  Math.round(5 + Math.random() *(-5-5));
+          dps.push({ x: xVal, y: yVal });
+
+          xVal++;
+          if (dps.length > 10) {
+            dps.shift();
+          }
+
+          chart.render();
+
+          // update chart after specified time. 
+
+        };
+
+        setInterval(function () { updateChart() }, updateInterval);
+      }
+    </script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    </head>
+
+    <body>
+      <div id="chartContainer" style="height: 300px; width: 100%;">
+      </div>
+  </div>
+
+</body>
+
+</html>
