@@ -353,11 +353,11 @@
   <div class="container" id='chartbar'>
     <script type="text/javascript">
       const db9 = firebase.database();
-      const ref9 = db9.ref('TrackData/' + 'GasData/' + 'ch4');
+      const ref9 = db9.ref('TrackData/' + 'GasData/' + 'co2');
       var dps=[];
-      ref9.on('value', async snapshot => {
+      ref9.on('value',  snapshot => {
         //console.log(snapshot);
-        const data =await snapshot.val();
+        const data = snapshot.val();
         console.log(data);
         //meth = data;
         data.map((ele,idx)=>{dps.push({x:idx,y:ele})})
